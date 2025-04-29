@@ -221,10 +221,7 @@ html {
     }
 }
 
-@media (min-width: 769px) {
-
-    .sidebar.open~.home-content {}
-}
+@media (min-width: 769px) {}
 
 @media (min-width: 1200px) {
     .home-content {

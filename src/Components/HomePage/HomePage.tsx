@@ -9,7 +9,7 @@ interface HomePageProps {
     onNavigate: () => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ username, onLogout, onNavigate }) => {
+const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
     const [activeButton, setActiveButton] = useState<number | null>(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [showCreateUsers, setShowCreateUsers] = useState(false);
