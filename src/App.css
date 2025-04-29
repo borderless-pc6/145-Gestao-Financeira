@@ -1,0 +1,317 @@
+/* Reset e estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+/* Container principal */
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Seção de boas-vindas (lado esquerdo) */
+.welcome-section {
+  flex: 1;
+  background-color: #f0f0f0;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #0066ff;
+  border-radius: 50%;
+}
+
+.logo-circle svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.welcome-subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.dashboard-image-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-image {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+
+/* Seção de login (lado direito) */
+.login-section {
+  flex: 1;
+  background-color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-content {
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.f-text {
+  color: #0066ff;
+}
+
+.logo-circle-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #111;
+  border-radius: 50%;
+  margin: 0 2px;
+}
+
+.logo-circle-dark svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.number-text {
+  color: #0066ff;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.form-group-form {
+  margin-bottom: 20px;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+.input-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #777;
+}
+
+.form-input {
+  flex: 1;
+  padding: 14px 12px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.password-toggle {
+  background: none;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.password-toggle svg {
+  width: 20px;
+  height: 20px;
+  color: #777;
+}
+
+.checkbox-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.forgot-password {
+  font-size: 0.9rem;
+  color: #0066ff;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #4442a2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #0052cc;
+}
+
+.login-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.signup-prompt {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.demo-link {
+  color: #0066ff;
+  text-decoration: none;
+}
+
+.demo-link:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .welcome-section {
+    padding: 30px 20px;
+  }
+
+  .login-section {
+    padding: 30px 20px;
+  }
+
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .dashboard-image-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+
+  .checkbox-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

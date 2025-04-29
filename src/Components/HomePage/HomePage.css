@@ -1,0 +1,237 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 0;
+    position: relative;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-content h1 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #ffffff;
+}
+
+.active-button {
+    background-color: #4442a2b6 !important;
+}
+
+.s-header-content {
+    display: flex;
+    gap: 10px;
+}
+
+.section-button {
+    background-color: #f0f0f056;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: grow;
+    gap: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.section-button:hover {
+    background-color: #4442a26f;
+}
+
+.home-content {
+    flex: 1;
+    width: 100%;
+    margin: auto;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    justify-content: center;
+    display: inline-block;
+    transition: margin-left 0.3s ease;
+}
+
+.welcome-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-card h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.welcome-card p {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.dashboard-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+.home-footer {
+    background-color: white;
+    padding: 15px 20px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+}
+
+/* Botão menu */
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 30px;
+    z-index: 1001;
+    background-color: #4442a2;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -150px;
+    height: 100%;
+    width: 110px;
+    background-color: #3a3939;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.column-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 70px;
+}
+
+.button-logout {
+    background-color: #4442a2;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-top: 172px;
+    border-radius: 20px;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .user-info {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .sidebar.open~.home-content {
+        margin-left: 0;
+    }
+
+    .sidebar.open+.sidebar-overlay {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+
+    .sidebar.open~.home-content {}
+}
+
+@media (min-width: 1200px) {
+    .home-content {
+        max-width: 1200px;
+    }
+
+    .header-content {
+        max-width: 1200px;
+    }
+}
