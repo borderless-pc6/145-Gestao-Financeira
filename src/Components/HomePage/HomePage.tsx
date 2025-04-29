@@ -6,10 +6,10 @@ import CreateUsers from "../CreateUsers/CreateUsers";
 interface HomePageProps {
     username: string;
     onLogout: () => void;
-    onNextPage: () => void;
+    onNavigate: () => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ username, onLogout, onNextPage }) => {
+const HomePage: React.FC<HomePageProps> = ({ username, onLogout, onNavigate }) => {
     const [activeButton, setActiveButton] = useState<number | null>(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [showCreateUsers, setShowCreateUsers] = useState(false);
@@ -17,14 +17,12 @@ const HomePage: React.FC<HomePageProps> = ({ username, onLogout, onNextPage }) =
     const handleButtonClick = (index: number) => {
         setActiveButton(index);
         if (index === 5) {
-            // Em vez de usar window.location.href, vamos mostrar o componente CreateUsers
             setShowCreateUsers(true);
         } else if (index === 8) {
             onLogout();
         }
     };
 
-    // Se showCreateUsers for true, renderizamos o componente CreateUsers
     if (showCreateUsers) {
         return <CreateUsers />;
     }
@@ -38,7 +36,7 @@ const HomePage: React.FC<HomePageProps> = ({ username, onLogout, onNextPage }) =
             <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
                 <div className="header-content">
                     <div className="s-header-content column-buttons">
-                        {[...Array(7)].map((_, index) => (
+                        {[...Array(6)].map((_, index) => (
                             <button
                                 key={index}
                                 className={`section-button ${activeButton === index ? "active-button" : ""}`}
@@ -73,11 +71,6 @@ const HomePage: React.FC<HomePageProps> = ({ username, onLogout, onNextPage }) =
                                 {index === 5 && (
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
                                         <path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                    </svg>
-                                )}
-                                {index === 6 && (
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
-                                        <path d="M19.14 12.936l1.43-1.43-1.42-1.42-1.43 1.42-1.41-1.41 1.42-1.43-1.42-1.42-1.43 1.42-1.41-1.41 1.42-1.43-1.42-1.42-1.43 1.42-1.41-1.41 1.42-1.43-1.42-1.42-1.43 1.42-1.41-1.41 1.42-1.43-1.42-1.42-1.43 1.42-1.41-1.41L2.86 5.064l1.42 1.42L2.86 7.914l1.41 1.41 1.43-1.42 1.41 1.41-1.42 1.43 1.42 1.42 1.43-1.42 1.41 1.41-1.42 1.43 1.42 1.42 1.43-1.42 1.41 1.41-1.42 1.43 1.42 1.42 1.43-1.42 1.41 1.41-1.42 1.43 1.42 1.42 1.43-1.42 1.41 1.41-1.42 1.43 1.42 1.42z" />
                                     </svg>
                                 )}
                             </button>
