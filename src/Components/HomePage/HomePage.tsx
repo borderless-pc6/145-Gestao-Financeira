@@ -4,9 +4,7 @@ import { useState } from "react";
 import CreateUsers from "../CreateUsers/CreateUsers";
 
 interface HomePageProps {
-    username: string;
     onLogout: () => void;
-    onNavigate: () => void;
 }
 
 const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {

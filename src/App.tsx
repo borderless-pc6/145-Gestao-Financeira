@@ -53,10 +53,8 @@ export default function LoginPage() {
   };
 
   if (isLoggedIn) {
-    // Removendo onNavigate, pois o componente HomePage não espera essa prop
-    return <HomePage username={username} onLogout={handleLogout} onNavigate={function (): void {
-      throw new Error("Function not implemented.");
-    }} />;
+    return <HomePage onLogout={handleLogout} />;
+
   }
 
   return (
