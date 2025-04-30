@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./CreateUsers.css";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebaseconfig";
 
-
-function CreateUsers({ onBack }: { onBack?: () => void }) {
+function CreateUsers() {
+    const navigate = useNavigate(); // Hook para navegação
     const [formData, setFormData] = useState({
         username: "",
         email: "",
@@ -19,10 +22,40 @@ function CreateUsers({ onBack }: { onBack?: () => void }) {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Dados do formulário:", formData);
+
+        if (formData.password !== formData.confirmPassword) {
+            alert("As senhas não coincidem.");
+            return;
+        }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                formData.email,
+                formData.password
+            );
+
+            const user = userCredential.user;
+            console.log("Usuário criado com sucesso:", user);
+
+            // Aqui você pode salvar mais dados no Firestore, se desejar
+            alert("Usuário criado com sucesso!");
+
+            // Após criar o usuário com sucesso, você pode redirecionar para a tela inicial
+            navigate("/dashboard"); // Ajuste para a rota da sua tela inicial
+        } catch (error: any) {
+            console.error("Erro ao criar usuário:", error);
+            alert(`Erro ao criar usuário: ${error.message}`);
+        }
     };
+
+    const handleBack = () => {
+        // Navegar para o dashboard ou página inicial após o login
+        navigate("/dashboard"); // Ajuste conforme necessário para a página correta
+    };
+
 
     return (
         <div className="create-user-container">
@@ -31,7 +64,8 @@ function CreateUsers({ onBack }: { onBack?: () => void }) {
             <form onSubmit={handleSubmit} className="create-user-form">
                 <div className="form-group">
                     <label className="form-group-label" htmlFor="username">Nome de Usuário</label>
-                    <input className="form-group-input"
+                    <input
+                        className="form-group-input"
                         type="text"
                         id="username"
                         name="username"
@@ -93,11 +127,9 @@ function CreateUsers({ onBack }: { onBack?: () => void }) {
 
                 <div className="form-buttons">
                     <button type="submit" className="btn-create">Criar Usuário</button>
-                    {onBack && (
-                        <button type="button" className="btn-back" onClick={onBack}>
-                            Voltar
-                        </button>
-                    )}
+                    <button type="button" className="btn-back" onClick={handleBack}>
+                        Voltar
+                    </button>
                 </div>
             </form>
         </div>

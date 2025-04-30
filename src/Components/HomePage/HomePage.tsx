@@ -2,12 +2,15 @@ import type React from "react";
 import "./HomePage.css";
 import { useState } from "react";
 import CreateUsers from "../CreateUsers/CreateUsers";
+import { useNavigate } from "react-router-dom";
 
 interface HomePageProps {
     onLogout: () => void;
 }
 
 const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
+    const navigate = useNavigate();
+
     const [activeButton, setActiveButton] = useState<number | null>(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [showCreateUsers, setShowCreateUsers] = useState(false);
@@ -15,12 +18,16 @@ const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
     const handleButtonClick = (index: number) => {
         setActiveButton(index);
         if (index === 5) {
+            // Redireciona para a página de criação de usuário
             setShowCreateUsers(true);
-        } else if (index === 8) {
+            navigate("/create-user"); // Aqui é onde você muda a URL
+        } else if (index === 6) {
             onLogout();
+            navigate("/"); // Navegar para a página de login ou home
         }
     };
 
+    // Se o estado de exibição de "CreateUsers" for verdadeiro, exibe o componente
     if (showCreateUsers) {
         return <CreateUsers />;
     }
@@ -76,8 +83,8 @@ const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
 
                         {/* BOTÃO DE SAIR */}
                         <button
-                            className={`section-button logout-button ${activeButton === 8 ? "active-button" : ""}`}
-                            onClick={() => handleButtonClick(8)}
+                            className={`section-button logout-button ${activeButton === 6 ? "active-button" : ""}`}
+                            onClick={() => handleButtonClick(6)}
                         >
                             Sair
                         </button>
