@@ -2,14 +2,12 @@ import { createContext, useEffect, useState, useContext, ReactNode } from "react
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { auth } from "../../../firebaseconfig";
 
-// Definindo o tipo de AuthContext com função de logout
 interface AuthContextType {
     user: User | null;
     loading: boolean;
-    logout: () => Promise<void>; // Adicionada função de logout
+    logout: () => Promise<void>;
 }
 
-// Criando o contexto com o tipo correto
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface AuthProviderProps {
@@ -29,11 +27,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         return () => unsubscribe();
     }, []);
 
-    // Função de logout usando Firebase Auth
     const logout = async (): Promise<void> => {
         try {
             await signOut(auth);
-            // O estado do usuário será atualizado automaticamente pelo onAuthStateChanged
             console.log("Logout realizado com sucesso");
         } catch (error) {
             console.error("Erro ao fazer logout:", error);
@@ -47,7 +43,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     );
 };
 
-// Hook para acessar o contexto
 export const useAuth = (): AuthContextType => {
     const context = useContext(AuthContext);
     if (!context) {

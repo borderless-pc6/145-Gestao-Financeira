@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebaseconfig";
 
 function CreateUsers() {
-    const navigate = useNavigate(); // Hook para navegação
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: "",
         email: "",
@@ -40,11 +40,9 @@ function CreateUsers() {
             const user = userCredential.user;
             console.log("Usuário criado com sucesso:", user);
 
-            // Aqui você pode salvar mais dados no Firestore, se desejar
             alert("Usuário criado com sucesso!");
 
-            // Após criar o usuário com sucesso, você pode redirecionar para a tela inicial
-            navigate("/dashboard"); // Ajuste para a rota da sua tela inicial
+            navigate("/dashboard");
         } catch (error: any) {
             console.error("Erro ao criar usuário:", error);
             alert(`Erro ao criar usuário: ${error.message}`);
@@ -52,8 +50,7 @@ function CreateUsers() {
     };
 
     const handleBack = () => {
-        // Navegar para o dashboard ou página inicial após o login
-        navigate("/dashboard"); // Ajuste conforme necessário para a página correta
+        navigate("/dashboard");
     };
 
 
@@ -119,9 +116,10 @@ function CreateUsers() {
                         value={formData.role}
                         onChange={handleChange}
                     >
-                        <option value="user">Usuário</option>
+                        <option value="master">Super-Administrador</option>
                         <option value="admin">Administrador</option>
-                        <option value="manager">Gerente</option>
+                        <option value="operator">Operador</option>
+                        <option value="user">Consultor-Externo</option>
                     </select>
                 </div>
 

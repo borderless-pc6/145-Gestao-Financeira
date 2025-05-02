@@ -3,15 +3,18 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import CreateUsers from "./Components/CreateUsers/CreateUsers";
 import HomePage from "./Components/HomePage/HomePage";
 import LoginPage from "./Components/LoginPage/LoginPage";
+import UserList from "./Components/UsersList/UsersList";
 import { AuthProvider, useAuth } from "./Routes/AuthContext/AuthContext";
 import PrivateRoute from "./Routes/PrivateRoute/PrivateRout";
 
-// Componente wrapper para HomePage com acesso ao AuthContext
 const HomePageWrapper: React.FC = () => {
   const { logout } = useAuth();
 
-  // Passa a função de logout do Firebase para o componente HomePage
   return <HomePage onLogout={logout} />;
+};
+
+const UserListWrapper: React.FC = () => {
+  return <UserList />;
 };
 
 const App: React.FC = () => {
@@ -29,6 +32,14 @@ const App: React.FC = () => {
             }
           />
           <Route path="/create-user" element={<CreateUsers />} />
+          <Route
+            path="/users"
+            element={
+              <PrivateRoute>
+                <UserListWrapper />
+              </PrivateRoute>
+            }
+          />
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>

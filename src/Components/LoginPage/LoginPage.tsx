@@ -22,7 +22,7 @@ export default function LoginPage() {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, username, password);
             console.log("User signed in:", userCredential.user);
-            navigate("/dashboard"); // Redireciona para HomePage após login
+            navigate("/dashboard");
         } catch (err: unknown) {
             console.error("Login error:", err);
             if (err instanceof FirebaseError) {

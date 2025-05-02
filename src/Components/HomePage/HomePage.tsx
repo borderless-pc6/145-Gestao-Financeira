@@ -2,6 +2,7 @@ import type React from "react";
 import "./HomePage.css";
 import { useState } from "react";
 import CreateUsers from "../CreateUsers/CreateUsers";
+import UserList from "../UsersList/UsersList";
 import { useNavigate } from "react-router-dom";
 
 interface HomePageProps {
@@ -14,22 +15,28 @@ const HomePage: React.FC<HomePageProps> = ({ onLogout }) => {
     const [activeButton, setActiveButton] = useState<number | null>(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [showCreateUsers, setShowCreateUsers] = useState(false);
+    const [showUsersList, setShowUsersList] = useState(false);
 
     const handleButtonClick = (index: number) => {
         setActiveButton(index);
+        setShowCreateUsers(false);
+        setShowUsersList(false);
+
         if (index === 5) {
-            // Redireciona para a página de criação de usuário
-            setShowCreateUsers(true);
-            navigate("/create-user"); // Aqui é onde você muda a URL
+            setShowUsersList(true);
         } else if (index === 6) {
             onLogout();
-            navigate("/"); // Navegar para a página de login ou home
+            navigate("/");
         }
     };
 
-    // Se o estado de exibição de "CreateUsers" for verdadeiro, exibe o componente
+
     if (showCreateUsers) {
         return <CreateUsers />;
+    }
+
+    if (showUsersList) {
+        return <UserList />;
     }
 
     return (
